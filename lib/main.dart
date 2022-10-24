@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:test1/quiz.dart';
 // ignore: unused_import
-import './page2.dart';
-import './answer.dart';
 
 void main() => runApp(const MyApp());
 
@@ -26,7 +25,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     // ignore: unused_local_variable, non_constant_identifier_names
-    final questions = [
+    final _questions = [
       {
         'questionText': 'What\'s Your Name?',
         'answers': ['Ali Hamza', 'Daniyal', 'Ibrahim', 'Saad', 'Numan'],
@@ -48,20 +47,15 @@ class _MyAppState extends State<MyApp> {
           backgroundColor: const Color.fromARGB(255, 93, 122, 121),
           title: const Text('Mixture of text'),
         ),
-        body: Container(
-          color: const Color.fromARGB(80, 219, 240, 241),
-          child: Column(
-            children: [
-              Question(
-                (questions[_questionIndex]['questionText'] as String),
+        body: _questionIndex < _questions.length
+            ? Quiz(
+                question: _questions,
+                answerQuestion: _answerQuestion,
+                questionIndex: questionIndex,
+              )
+            : const Center(
+                child: Text('No More Question, You Did it!'),
               ),
-              ...(questions[_questionIndex]['answers'] as List<String>)
-                  .map((answer) {
-                return Answer(_answerQuestion, answer);
-              }).toList()
-            ],
-          ),
-        ),
       ),
     );
   }
