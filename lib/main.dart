@@ -49,9 +49,9 @@ class _MyAppState extends State<MyApp> {
         ),
         body: _questionIndex < _questions.length
             ? Quiz(
-                question: _questions,
-                answerQuestion: _answerQuestion,
-                questionIndex: questionIndex,
+                _questions,
+                _answerQuestion,
+                _questionIndex,
               )
             : const Center(
                 child: Text('No More Question, You Did it!'),
