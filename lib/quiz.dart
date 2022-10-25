@@ -1,3 +1,5 @@
+// ignore_for_file: invalid_required_positional_param
+
 import 'package:flutter/material.dart';
 import 'package:test1/page2.dart';
 import 'package:test1/answer.dart';
@@ -20,9 +22,10 @@ class Quiz extends StatelessWidget {
           Question(
             (questions[_questionIndex]['questionText'] as String),
           ),
-          ...(questions[_questionIndex]['answers'] as List<String>)
+          ...(questions[_questionIndex]['answers'] as List<Map<String, Object>>)
               .map((answer) {
-            return Answer(_answerQuestion, answer);
+            return Answer(() => _answerQuestion(answer['score']),
+                answer['text'] as String);
           }).toList()
         ],
       ),
