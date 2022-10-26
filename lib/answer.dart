@@ -13,6 +13,8 @@ class Answer extends StatelessWidget {
       // st_constructors
       child: ElevatedButton(
         onPressed: () => {selectHandlar()},
+        style: ElevatedButton.styleFrom(
+            backgroundColor: const Color.fromARGB(255, 176, 139, 211)),
         child: Text(answerText),
       ),
     );
